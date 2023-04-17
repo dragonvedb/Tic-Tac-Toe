@@ -88,3 +88,17 @@ const gameBoard = (() => {
     setToken,
   };
 })();
+
+const displayController = (() => {
+  const displayBoard = document.getElementById("board-container");
+  const displayCells = document.querySelectorAll(".cell");
+  for (const cell of displayCells) {
+    cell.addEventListener("click", () => {
+      const cellRow = cell.getAttribute("data-coords")[0];
+      const cellCol = cell.getAttribute("data-coords")[1];
+      gameBoard.setToken(cellRow, cellCol);
+    });
+  }
+
+  const updateBoard = () => {};
+})();
