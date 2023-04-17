@@ -6,8 +6,8 @@ const Player = (name, token, color) => {
   return { getName, getToken, getColor };
 };
 
-const playerOne = Player("Pupa", "cross", "blue");
-const playerTwo = Player("Lupa", "circle", "red");
+const playerOne = Player("Player X", "cross", "blue");
+const playerTwo = Player("Player O", "circle", "red");
 
 const gameController = (() => {
   let turnCounter = 1;
@@ -26,11 +26,7 @@ const gameController = (() => {
   };
 
   const victoryCheck = () => {
-    const board = [
-      [2, 1, 2],
-      [1, 2, 1],
-      [2, 0, 0],
-    ];
+    const board = gameBoard.getBoard();
     const linesArr = [
       [board[0][0], board[0][1], board[0][2]],
       [board[1][0], board[1][1], board[1][2]],
@@ -82,7 +78,7 @@ const gameBoard = (() => {
     if (board[cellRow][cellCol] === 0) {
       board[cellRow][cellCol] = player === playerOne ? 1 : 2;
       console.log(gameBoard.getBoard());
-      if (gameController.getCurrentTurn >= 5) gameController.victoryCheck;
+      if (gameController.getCurrentTurn() >= 5) gameController.victoryCheck();
       gameController.switchPlayer();
     } else console.log("INVALID MOVE");
   };
