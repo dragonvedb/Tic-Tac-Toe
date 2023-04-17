@@ -25,6 +25,9 @@ body {
 
 .cell {
     background-color: aliceblue;
+    display: grid;
+    place-items: center;
+    font-size: 5em;
 }
 
 .cell:hover {

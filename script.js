@@ -77,6 +77,7 @@ const gameBoard = (() => {
 
     if (board[cellRow][cellCol] === 0) {
       board[cellRow][cellCol] = player === playerOne ? 1 : 2;
+      displayController.updateBoard();
       console.log(gameBoard.getBoard());
       if (gameController.getCurrentTurn() >= 5) gameController.victoryCheck();
       gameController.switchPlayer();
@@ -100,5 +101,23 @@ const displayController = (() => {
     });
   }
 
-  const updateBoard = () => {};
+  const updateBoard = () => {
+    const board = gameBoard.getBoard();
+
+    for (let i = 0; i < displayCells.length; i++) {
+      const cell = displayCells[i];
+      const cellRow = cell.getAttribute("data-coords")[0];
+      const cellCol = cell.getAttribute("data-coords")[1];
+
+      if (board[cellRow][cellCol] === 1) {
+        cell.style.color = "blue";
+        cell.innerHTML = "X";
+      } else if (board[cellRow][cellCol] === 2) {
+        cell.style.color = "red";
+        cell.innerHTML = "O";
+      }
+    }
+  };
+
+  return { updateBoard };
 })();
