@@ -6,8 +6,8 @@ const Player = (name, token, color) => {
   return { getName, getToken, getColor };
 };
 
-const playerOne = Player("Player X", "cross", "red");
-const playerTwo = Player("Player O", "circle", "blue");
+const playerOne = Player("Player X", "cross", "green");
+const playerTwo = Player("Player O", "circle", "rebeccaPurple");
 
 const gameController = (() => {
   let turnCounter = 1;
@@ -127,10 +127,10 @@ const displayController = (() => {
       const cellCol = cell.getAttribute("data-coords")[1];
 
       if (board[cellRow][cellCol] === 1) {
-        cell.style.color = "red";
+        cell.style.color = playerOne.getColor();
         cell.innerHTML = "X";
       } else if (board[cellRow][cellCol] === 2) {
-        cell.style.color = "blue";
+        cell.style.color = playerTwo.getColor();
         cell.innerHTML = "O";
       }
     }
