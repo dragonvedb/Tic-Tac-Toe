@@ -6,8 +6,8 @@ const Player = (name, token, color) => {
   return { getName, getToken, getColor };
 };
 
-const playerOne = Player("Player X", "cross", "blue");
-const playerTwo = Player("Player O", "circle", "red");
+const playerOne = Player("Player X", "cross", "red");
+const playerTwo = Player("Player O", "circle", "blue");
 
 const gameController = (() => {
   let turnCounter = 1;
@@ -26,7 +26,14 @@ const gameController = (() => {
 
   const declareWinner = (winnerNum) => {
     const winner = winnerNum === 1 ? playerOne : playerTwo;
-    console.log(winner.getName());
+    displayController.updateMessage(
+      `${winner.getName()} has won on turn ${turnCounter}. Congratulations!`,
+      winner.getColor()
+    );
+  };
+
+  const declareTie = () => {
+    displayController.updateMessage("The game is tied.", "white");
   };
 
   const victoryCheck = () => {
@@ -58,7 +65,12 @@ const gameController = (() => {
       if (winner) {
         return declareWinner(winner);
       }
+      if (turnCounter >= 9) {
+        return declareTie();
+      }
     }
+
+    return switchPlayer();
   };
 
   return { getCurrentTurn, getCurrentPlayer, switchPlayer, victoryCheck };
@@ -82,10 +94,10 @@ const gameBoard = (() => {
     if (board[cellRow][cellCol] === 0) {
       board[cellRow][cellCol] = player === playerOne ? 1 : 2;
       displayController.updateBoard();
-      console.log(gameBoard.getBoard());
-      if (gameController.getCurrentTurn() >= 5) gameController.victoryCheck();
-      gameController.switchPlayer();
-    } else console.log("INVALID MOVE");
+      if (gameController.getCurrentTurn() >= 5) {
+        gameController.victoryCheck();
+      } else gameController.switchPlayer();
+    }
   };
 
   return {
@@ -115,10 +127,10 @@ const displayController = (() => {
       const cellCol = cell.getAttribute("data-coords")[1];
 
       if (board[cellRow][cellCol] === 1) {
-        cell.style.color = "blue";
+        cell.style.color = "red";
         cell.innerHTML = "X";
       } else if (board[cellRow][cellCol] === 2) {
-        cell.style.color = "red";
+        cell.style.color = "blue";
         cell.innerHTML = "O";
       }
     }
