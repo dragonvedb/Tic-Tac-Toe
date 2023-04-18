@@ -9,6 +9,7 @@ html, body {
 
 body {
     background-color: darkslategray;
+    background-image: url(icons/Patinated\ Copper\ None\ 3000\ x\ 3016\ mm.jpg);
 }
 
 form {
@@ -91,8 +92,8 @@ form button:hover,
     display: grid;
     grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
     gap: 5px;
-    height: 425px;
-    width: 425px;
+    height: 450px;
+    width: 450px;
     margin: 50px auto 30px;
     border: black solid 10px;
     background-color: black;
@@ -105,7 +106,7 @@ form button:hover,
     background-color: aliceblue;
     display: grid;
     place-items: center;
-    font-size: 6.3rem;
+    font-size: 6.8rem;
     font-family: 'Chelsea Market', cursive;
     font-weight: 600;
 }
