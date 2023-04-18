@@ -75,7 +75,7 @@ form button {
     width: fit-content;
     margin: auto;
     padding: 30px 25px;
-    border: aliceblue solid 4px;
+    border: aliceblue solid 5px;
     background-color: rgba(0, 0, 0, 0);
     color: aliceblue;
     font-size: 2.5rem;
@@ -123,7 +123,7 @@ form button {
     height: 125px;
     width: 125px;
     margin: auto;
-    border: aliceblue solid 4px;
+    border: aliceblue solid 5px;
     background-color: rgba(0, 0, 0, 0);
 }
 
