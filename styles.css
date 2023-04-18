@@ -30,7 +30,7 @@ body {
     font-size: 7em;
 }
 
-.cell:hover {
+.cell:not(.marked):hover {
     background-color: lightblue;
 }
 

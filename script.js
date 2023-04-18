@@ -128,9 +128,11 @@ const displayController = (() => {
       if (board[cellRow][cellCol] === 1) {
         cell.style.color = playerOne.getColor();
         cell.innerHTML = "X";
+        cell.classList.add("marked");
       } else if (board[cellRow][cellCol] === 2) {
         cell.style.color = playerTwo.getColor();
         cell.innerHTML = "O";
+        cell.classList.add("marked");
       }
     }
   };
