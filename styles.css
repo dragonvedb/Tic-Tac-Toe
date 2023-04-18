@@ -105,7 +105,9 @@ form button:hover,
     background-color: aliceblue;
     display: grid;
     place-items: center;
-    font-size: 7rem;
+    font-size: 6.3rem;
+    font-family: 'Chelsea Market', cursive;
+    font-weight: 600;
 }
 
 .cell:not(.marked):hover {
