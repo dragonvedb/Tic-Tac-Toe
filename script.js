@@ -6,7 +6,7 @@ const Player = (name, token, color) => {
   return { getName, getToken, getColor };
 };
 
-const playerOne = Player("Player X", "cross", "blue");
+const playerOne = Player("WWWWWWWWWWWWWWW", "cross", "blue");
 const playerTwo = Player("Player O", "circle", "red");
 
 const gameController = (() => {
