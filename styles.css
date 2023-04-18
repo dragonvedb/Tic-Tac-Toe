@@ -3,9 +3,7 @@
 }
 
 html, body {
-    height: 100%;
-    width: 100%;
-    padding: 0;
+
 }
 
 body {
@@ -16,10 +14,10 @@ body {
     display: grid;
     grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
     gap: 4px;
-    height: 450px;
-    width: 450px;
+    height: 500px;
+    width: 500px;
     margin: 50px auto;
-    border: black solid 5px;
+    border: black solid 10px;
     background-color: black;
 }
 
@@ -32,4 +30,10 @@ body {
 
 .cell:hover {
     background-color: lightblue;
+}
+
+#message-container {
+    width: fit-content;
+    margin: auto;
+    font-size: 3.5rem;
 }

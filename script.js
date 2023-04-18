@@ -18,6 +18,10 @@ const gameController = (() => {
   const switchPlayer = () => {
     currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
     turnCounter += 1;
+    displayController.updateMessage(
+      `${currentPlayer.getName()}, make your move.`,
+      currentPlayer.getColor()
+    );
   };
 
   const declareWinner = (winnerNum) => {
@@ -100,6 +104,7 @@ const displayController = (() => {
       gameBoard.setToken(cellRow, cellCol);
     });
   }
+  const displayMessage = document.getElementById("message-container");
 
   const updateBoard = () => {
     const board = gameBoard.getBoard();
@@ -119,5 +124,10 @@ const displayController = (() => {
     }
   };
 
-  return { updateBoard };
+  const updateMessage = (msg, color) => {
+    displayMessage.innerHTML = msg;
+    displayMessage.style.color = color;
+  };
+
+  return { updateBoard, updateMessage };
 })();
