@@ -65,11 +65,8 @@ const gameController = (() => {
       if (winner) {
         return declareWinner(winner);
       }
-      if (turnCounter >= 9) {
-        return declareTie();
-      }
     }
-
+    if (turnCounter >= 9) return declareTie();
     return switchPlayer();
   };
 
