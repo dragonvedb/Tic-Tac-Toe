@@ -25,7 +25,7 @@ form.onsubmit = (e) => {
 };
 
 const gameController = (() => {
-  let turnCounter = 1;
+  let turnCounter = 0;
   const getCurrentTurn = () => turnCounter;
 
   let currentPlayer = null;
@@ -33,6 +33,7 @@ const gameController = (() => {
   const switchPlayer = () => {
     currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
     turnCounter += 1;
+    console.log(turnCounter);
     displayController.updateMessage(
       `${currentPlayer.getName()}, make your move.`,
       currentPlayer.getColor()
