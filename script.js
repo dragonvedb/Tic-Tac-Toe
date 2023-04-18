@@ -1,13 +1,22 @@
-const Player = (name, token, color) => {
+const Player = (name, color) => {
   const getName = () => name;
-  const getToken = () => token;
   const getColor = () => color;
 
-  return { getName, getToken, getColor };
+  return { getName, getColor };
 };
 
-const playerOne = Player("WWWWWWWWWWWWWWW", "cross", "blue");
-const playerTwo = Player("Player O", "circle", "red");
+let playerOne = null;
+let playerTwo = null;
+
+const form = document.getElementById("players-form");
+form.onsubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  playerOne = Player(formData.get("p1-name"), formData.get("p1-color"));
+  playerTwo = Player(formData.get("p2-name"), formData.get("p2-color"));
+  form.classList.toggle("hidden");
+  displayController.toggleGame();
+};
 
 const gameController = (() => {
   let turnCounter = 1;
@@ -127,6 +136,9 @@ const gameBoard = (() => {
 })();
 
 const displayController = (() => {
+  const displayGame = document.getElementById("game-container");
+  const toggleGame = () => displayGame.classList.toggle("hidden");
+
   const displayBoard = document.getElementById("board-container");
   const displayCells = document.querySelectorAll(".cell");
   for (const cell of displayCells) {
@@ -136,7 +148,9 @@ const displayController = (() => {
       gameBoard.setToken(cellRow, cellCol);
     });
   }
+
   const displayMessage = document.getElementById("message-container");
+
   const resetButton = document.getElementById("reset-button");
   resetButton.addEventListener("click", () => {
     gameController.reset();
@@ -185,5 +199,12 @@ const displayController = (() => {
     displayBoard.classList.toggle("disabled");
   };
 
-  return { toggleResetBtn, updateBoard, updateMessage, toggleBoard, reset };
+  return {
+    toggleGame,
+    toggleResetBtn,
+    updateBoard,
+    updateMessage,
+    toggleBoard,
+    reset,
+  };
 })();

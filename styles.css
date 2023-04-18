@@ -14,12 +14,13 @@ body {
 form {
     width: 100%;
     display: grid;
-    grid-template: 1fr auto / minmax(400px, 28%) minmax(400px, 28%);
+    grid-template: 1fr auto / minmax(425px, 30%) minmax(425px, 30%);
     gap: 50px 20px;
     padding-top: 50px;
     position: absolute;
     justify-content: center;
     color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 form fieldset {
@@ -73,11 +74,12 @@ form button {
     height: 100px;
     width: fit-content;
     margin: auto;
-    padding: 25px;
+    padding: 30px 25px;
     border: aliceblue solid 4px;
     background-color: rgba(0, 0, 0, 0);
     color: aliceblue;
     font-size: 2.5rem;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 #board-container {

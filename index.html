@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Sofia+Sans+Condensed&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <form action="">
+    <form id="players-form" action="" method="get">
         <fieldset>
             <Legend>Player X</Legend>
             <label for="p1-name">
                 Name
-                <input id="p1-name" type="text" maxlength="15" required>
+                <input id="p1-name" type="text" value="Player X" maxlength="15" required>
             </label>
             <div id="p1-color-container">
                 <p>Color</p>
@@ -33,7 +33,7 @@
             <Legend>Player O</Legend>
             <label for="p2-name">
                 Name
-                <input id="p2-name" type="text" maxlength="15" required>
+                <input id="p2-name" type="text" value="Player O" maxlength="15" required>
             </label>
             <div id="p2-color-container">
                 <p>Color</p>
