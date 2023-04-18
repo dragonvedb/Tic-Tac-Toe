@@ -10,6 +10,47 @@ body {
     background-color: darkslategray;
 }
 
+form {
+    position: absolute;
+    color: aliceblue;
+}
+
+form fieldset {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    padding: 50px 25px 75px;
+    font-size: 2rem;
+}
+
+form p {
+    margin: 0;
+}
+
+form input {
+    appearance: none;
+    border: none;
+    border-radius: 5px;
+    height: 2.5rem;
+}
+
+form input[type="text"]:focus,
+form input:checked {
+    outline: aliceblue solid 2px;
+    outline-offset: 3px;
+}
+
+form input[type="text"] {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 0 0.5rem;
+}
+
+form input[type="radio"] {
+    width: 2.5rem;
+    background-color: antiquewhite;
+}
+
 #board-container {
     display: grid;
     grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
@@ -45,10 +86,6 @@ body {
     font-family: 'Sofia Sans Condensed', sans-serif;
 }
 
-.disabled {
-    pointer-events: none;
-}
-
 #reset-button {
     appearance: none;
     display: block;
@@ -57,4 +94,12 @@ body {
     margin: auto;
     border: aliceblue solid 4px;
     background-color: rgba(0, 0, 0, 0);
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.hidden {
+    visibility: hidden;
 }

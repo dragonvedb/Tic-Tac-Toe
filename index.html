@@ -11,19 +11,16 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <!-- <form action="">
+    <form action="">
         <fieldset>
-            <Legend>Player One</Legend>
+            <Legend>Player X</Legend>
             <label for="p1-name">
                 Name
-                <input id="p1-name" type="text">
-            </label>
-            <label for="">
-                <input type="text">
+                <input id="p1-name" type="text" maxlength="15" required>
             </label>
             <div id="p1-color-container">
-            <p>Color</p>
-                <input id="red" value="red" type="radio" name="p1-color">
+                <p>Color</p>
+                <input id="red" value="red" type="radio" name="p1-color" checked>
                 <input id="orange" value="orange" type="radio" name="p1-color">
                 <input id="yellow" value="yellow" type="radio" name="p1-color">
                 <input id="green" value="green" type="radio" name="p1-color">
@@ -31,21 +28,39 @@
                 <input id="purple" value="purple" type="radio" name="p1-color">
             </div>
         </fieldset>
-    </form> -->
+        <fieldset>
+            <Legend>Player O</Legend>
+            <label for="p2-name">
+                Name
+                <input id="p2-name" type="text" maxlength="15" required>
+            </label>
+            <div id="p2-color-container">
+                <p>Color</p>
+                <input id="red" value="red" type="radio" name="p1-color" checked>
+                <input id="orange" value="orange" type="radio" name="p1-color">
+                <input id="yellow" value="yellow" type="radio" name="p1-color">
+                <input id="green" value="green" type="radio" name="p1-color">
+                <input id="blue" value="blue" type="radio" name="p1-color">
+                <input id="purple" value="purple" type="radio" name="p1-color">
+            </div>
+        </fieldset>
+    </form>
 
-    <div id="board-container">
-        <button class="cell" data-coords="00"></button>
-        <button class="cell" data-coords="01"></button>
-        <button class="cell" data-coords="02"></button>
-        <button class="cell" data-coords="10"></button>
-        <button class="cell" data-coords="11"></button>
-        <button class="cell" data-coords="12"></button>
-        <button class="cell" data-coords="20"></button>
-        <button class="cell" data-coords="21"></button>
-        <button class="cell" data-coords="22"></button>
-    </div>
-    <div id="message-container"></div>
-    <button id="reset-button">R</button>
+        <div id="game-container" class="hidden">
+            <div id="board-container">
+                <button class="cell" data-coords="00"></button>
+                <button class="cell" data-coords="01"></button>
+                <button class="cell" data-coords="02"></button>
+                <button class="cell" data-coords="10"></button>
+                <button class="cell" data-coords="11"></button>
+                <button class="cell" data-coords="12"></button>
+                <button class="cell" data-coords="20"></button>
+                <button class="cell" data-coords="21"></button>
+                <button class="cell" data-coords="22"></button>
+            </div>
+            <div id="message-container"></div>
+            <button id="reset-button" class="hidden">R</button>
+        </div>
 
 
 <script src="script.js"></script>

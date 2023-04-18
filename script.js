@@ -31,11 +31,13 @@ const gameController = (() => {
       winner.getColor()
     );
     displayController.toggleBoard();
+    displayController.toggleResetBtn();
   };
 
   const declareTie = () => {
     displayController.updateMessage("The game is tied.", "white");
     displayController.toggleBoard();
+    displayController.toggleResetBtn();
   };
 
   const victoryCheck = () => {
@@ -72,18 +74,34 @@ const gameController = (() => {
     return switchPlayer();
   };
 
-  return { getCurrentTurn, getCurrentPlayer, switchPlayer, victoryCheck };
+  const reset = () => {
+    turnCounter = 1;
+    currentPlayer = playerOne;
+    gameBoard.clearBoard();
+    displayController.reset();
+  };
+
+  return {
+    getCurrentTurn,
+    getCurrentPlayer,
+    switchPlayer,
+    victoryCheck,
+    reset,
+  };
 })();
 
 const gameBoard = (() => {
-  const board = [];
+  let board = [];
 
-  for (let i = 0; i < 3; i++) {
-    board.push([]);
-    for (let x = 0; x < 3; x++) {
-      board[i].push(0);
+  const clearBoard = () => {
+    board = [];
+    for (let i = 0; i < 3; i++) {
+      board.push([]);
+      for (let x = 0; x < 3; x++) {
+        board[i].push(0);
+      }
     }
-  }
+  };
 
   const getBoard = () => board;
 
@@ -99,7 +117,10 @@ const gameBoard = (() => {
     }
   };
 
+  clearBoard();
+
   return {
+    clearBoard,
     getBoard,
     setToken,
   };
@@ -116,6 +137,14 @@ const displayController = (() => {
     });
   }
   const displayMessage = document.getElementById("message-container");
+  const resetButton = document.getElementById("reset-button");
+  resetButton.addEventListener("click", () => {
+    gameController.reset();
+    toggleResetBtn();
+  });
+  const toggleResetBtn = () => {
+    resetButton.classList.toggle("hidden");
+  };
 
   const updateBoard = () => {
     const board = gameBoard.getBoard();
@@ -133,6 +162,9 @@ const displayController = (() => {
         cell.style.color = playerTwo.getColor();
         cell.innerHTML = "O";
         cell.classList.add("marked");
+      } else {
+        cell.innerHTML = "";
+        cell.classList.remove("marked");
       }
     }
   };
@@ -144,5 +176,14 @@ const displayController = (() => {
 
   const toggleBoard = () => displayBoard.classList.toggle("disabled");
 
-  return { updateBoard, updateMessage, toggleBoard };
+  const reset = () => {
+    updateBoard();
+    updateMessage(
+      `${playerOne.getName()}, make your move.`,
+      playerOne.getColor()
+    );
+    displayBoard.classList.toggle("disabled");
+  };
+
+  return { toggleResetBtn, updateBoard, updateMessage, toggleBoard, reset };
 })();
