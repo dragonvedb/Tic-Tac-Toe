@@ -6,8 +6,8 @@ const Player = (name, token, color) => {
   return { getName, getToken, getColor };
 };
 
-const playerOne = Player("Player X", "cross", "green");
-const playerTwo = Player("Player O", "circle", "rebeccaPurple");
+const playerOne = Player("Player X", "cross", "blue");
+const playerTwo = Player("Player O", "circle", "red");
 
 const gameController = (() => {
   let turnCounter = 1;
@@ -30,10 +30,12 @@ const gameController = (() => {
       `${winner.getName()} has won on turn ${turnCounter}. Congratulations!`,
       winner.getColor()
     );
+    displayController.toggleBoard();
   };
 
   const declareTie = () => {
     displayController.updateMessage("The game is tied.", "white");
+    displayController.toggleBoard();
   };
 
   const victoryCheck = () => {
@@ -138,5 +140,7 @@ const displayController = (() => {
     displayMessage.style.color = color;
   };
 
-  return { updateBoard, updateMessage };
+  const toggleBoard = () => displayBoard.classList.toggle("disabled");
+
+  return { updateBoard, updateMessage, toggleBoard };
 })();
