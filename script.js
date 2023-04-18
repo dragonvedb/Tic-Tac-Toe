@@ -21,13 +21,14 @@ form.onsubmit = (e) => {
   playerTwo = Player(formData.get("p2-name"), formData.get("p2-color"));
   form.classList.toggle("hidden");
   displayController.toggleGame();
+  gameController.switchPlayer();
 };
 
 const gameController = (() => {
   let turnCounter = 1;
   const getCurrentTurn = () => turnCounter;
 
-  let currentPlayer = playerOne;
+  let currentPlayer = null;
   const getCurrentPlayer = () => currentPlayer;
   const switchPlayer = () => {
     currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
