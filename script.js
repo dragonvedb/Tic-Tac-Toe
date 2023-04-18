@@ -9,6 +9,11 @@ let playerOne = null;
 let playerTwo = null;
 
 const form = document.getElementById("players-form");
+const colorPickers = document.querySelectorAll('input[type="radio"]');
+for (let i = 0; i < colorPickers.length; i++) {
+  const picker = colorPickers[i];
+  picker.style.backgroundColor = picker.value;
+}
 form.onsubmit = (e) => {
   e.preventDefault();
   const formData = new FormData(form);
